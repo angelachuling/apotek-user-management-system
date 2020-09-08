@@ -1,0 +1,15 @@
+{
+  "name": "usermanagementsystem",
+  "version": "1.0.0",
+  "description": "User Management System",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Asreen Sujatha Chuling",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.1"
+  }
+}
