@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
-
+const bodyParser=require('body-parser');
+//var urlencodedParser = bodyParser.urlencoded({ extended: false })
 //set up a static folder
 app.use(express.static(`${__dirname}/public`));
+app.use(bodyParser.urlencoded({extended: true}))
 
 //set up template engine
 app.set('view engine', 'hbs');
@@ -28,10 +30,16 @@ app.get('/contact', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login');
 })
-
-app.post('/login', (req, res) => {
+// app.post('/login',(req,res)=>{
+//     console.log(req.body);
+// })
+let myArray=[];
+app.post('/login', function (req, res) {
     console.log(req.body);
-})
-
+    myArray.push(req.body.uname[0]);
+    myArray.push(req.body.pswd[0]);
+    //res.send('welcome, ' + req.body.username)
+    console.log(myArray)
+  })
 
 app.listen(5000, () => {console.log('Listening to port 5000')});

@@ -30,12 +30,9 @@ function loginDetailSubmit(userName, password,event) {
         alert("Log in failed! Pls try again.");
     }
 }
-
-
-
 //new user sign up
 function registerUser(firstName, lastName, userName, password, event){
-    //firstName.value, lastName.value, userName.value, pswd.value,
+    firstName.value, lastName.value, userName.value, pswd.value,
     
     event.preventDefault();
 
@@ -43,7 +40,7 @@ function registerUser(firstName, lastName, userName, password, event){
     if (firstName, lastName, userName, password) {
 
             //export data from localStorage and covert it to JS array. 
-            let existingDataJS = JSON.parse(localStorage.getItem('apotekUsers'));
+            //let existingDataJS = JSON.parse(localStorage.getItem('apotekUsers'));
 
             if (existingDataJS == null){
                 existingDataJS = [];
@@ -59,7 +56,7 @@ function registerUser(firstName, lastName, userName, password, event){
             existingDataJS.push(newUser);
             
             //save new user data in localstorage
-            localStorage.setItem('TshirtShopUsers', JSON.stringify(existingDataJS));
+            localStorage.setItem('apotekUsers', JSON.stringify(existingDataJS));
 
             console.log("new user input done")
 
