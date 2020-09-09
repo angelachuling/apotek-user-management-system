@@ -36,10 +36,20 @@ app.get('/login', (req, res) => {
 let myArray=[];
 app.post('/login', function (req, res) {
     console.log(req.body);
-    myArray.push(req.body.uname[0]);
-    myArray.push(req.body.pswd[0]);
+    // myArray.push(req.body.uname[0]);
+    // myArray.push(req.body.pswd[0]);
     //res.send('welcome, ' + req.body.username)
-    console.log(myArray)
+    // console.log(myArray)
   })
+
+  app.post('/signup', function (req, res) {
+    console.log(req.body);
+    res.redirect('/product'); ///product is a route
+    // myArray.push(req.body.uname[0]);
+    // myArray.push(req.body.pswd[0]);
+    //res.send('welcome, ' + req.body.username)
+    // console.log(myArray)
+  })
+
 
 app.listen(5000, () => {console.log('Listening to port 5000')});
