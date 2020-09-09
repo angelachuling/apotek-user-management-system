@@ -2,17 +2,10 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const fs = require("fs");
-
 let userData = {};
-
 //set up a static folder
 app.use(express.static(`${__dirname}/public`));
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
-
+app.use(bodyParser.urlencoded({extended: true}));
 //set up template engine
 app.set("view engine", "hbs");
 
