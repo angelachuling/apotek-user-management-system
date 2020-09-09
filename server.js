@@ -6,6 +6,16 @@ let userData = {};
 //set up a static folder
 app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.urlencoded({extended: true}));
+
+let userData = {};
+
+//set up a static folder
+app.use(express.static(`${__dirname}/public`));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 //set up template engine
 app.set("view engine", "hbs");
 
@@ -73,4 +83,7 @@ app.post("/login", function (req, res) {
 
 app.listen(5000, () => {
   console.log("Listening to port 5000");
+
 });
+
+
