@@ -1,5 +1,19 @@
 .logoClass{
-    width: 100px;
-    height: 100px;
-
+    width: 70px;
+    height: 70px;
+    background-color:rgba(255, 0, 0, 0.329) ;
+}
+#cartCount{
+    font-size: 12px;
+    background: #FF0000;
+    color: #fff;
+    padding: 1px 5px;
+    vertical-align: top;
+}
+#favoriteCount{
+font-size: 12px;
+background: #FF0000;
+color: #fff;
+padding: 1px 5px;
+vertical-align: top;
 }

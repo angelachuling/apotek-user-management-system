@@ -1,0 +1,40 @@
+[
+    {"id":"1",
+       "proName":"Corona-pandemic" ,
+        "src":"https://cdn.shop-apotheke.com/images/840x0/corona-pandemie-atemschutzmaske-mundschutz-D08105283-p1.webp",
+     "title":"Corona pandemic respirator",
+     "description":"This is a wider card with supporting text below as a natural lead-in to additional content This content is a little bit longer"
+    },
+    {"id":"2",
+        "proName":"Corona-pandemic" ,
+        "src":"https://cdn.shop-apotheke.com/images/840x0/voltaren-schmerzgel-forte-gel-D11240397-p1.webp",
+        "title":"CVoltaren® pain gel forte",
+        "description":"This is a wider card with supporting text below as a natural lead-in to additional content This content is a little bit longer"
+
+    },
+    {"id":"3",
+        "proName":"Corona-pandemic" ,
+        "src":"https://cdn.shop-apotheke.com/images/840x0/paracetamol-ratiopharm-500-mg-tabletten-D01126111-p1.webp",
+        "title":"Paracetamol-ratiopharm® 500 mg",
+        "description":"This is a wider card with supporting text below as a natural lead-in to additional content This content is a little bit longer"
+    },
+    {"id":"4",
+        "proName":"Corona-pandemic" ,
+        "src":"https://cdn.shop-apotheke.com/images/840x0/bepanthen-augen-und-nasensalbe-augen-und-nasensalbe-D01578675-p1.webp",
+        "title":"Bepanthen® eye and nose ointment",
+        "description":"This is a wider card with supporting text below as a natural lead-in to additional content This content is a little bit longer"
+       },
+       {"id":"5",
+        "proName":"Corona-pandemic" ,
+           "src":"https://cdn.shop-apotheke.com/images/840x0/paracetamol-redcare-500-mg-tabletten-D16013200-p1.webp",
+           "title":"PARACETAMOL RedCare 500 mg",
+           "description":"This is a wider card with supporting text below as a natural lead-in to additional content This content is a little bit longer"
+   
+       },
+       {"id":"6",
+        "proName":"Corona-pandemic" ,
+           "src":"https://cdn.shop-apotheke.com/images/840x0/vitamin-b-komplex-ratiopharm-kapseln-kapseln-D13352373-p1.webp",
+           "title":"Vitamin B complex ratiopharm® capsules",
+           "description":"This is a wider card with supporting text below as a natural lead-in to additional content This content is a little bit longer"
+       }
+]

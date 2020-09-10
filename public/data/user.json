@@ -1,1 +1,113 @@
-[{"uFname":"andy","uSname":"aaa","uAddress":"aaa","uname":"andy","pswd":"1234","remember":"on"},{"uFname":"john","uSname":"dou","uAddress":"aaa","uname":"john","pswd":"1234","remember":"on"},{"uFname":"qq","uSname":"qq","uAddress":"qq","uname":"qq","email":"asreen.ilyas55@gmail.com","pswd":"qq","remember":"on"}]
+[
+    {
+        "uFname": "andy",
+        "uSname": "sammo",
+        "uAddress": "aaa",
+        "uname": "andy",
+        "email": "andy55@gmail.com",
+        "pswd": "1234",
+        "role": "user",
+        "remember": "on"
+    },
+    {
+        "uFname": "ali",
+        "uSname": "samer",
+        "uAddress": "yy",
+        "uname": "ali",
+        "email": "ali@gg.com",
+        "pswd": "1234",
+        "role": "worker",
+        "remember": "on"
+    },
+   
+    {
+        "uFname": "yy",
+        "uSname": "yy",
+        "uAddress": "yy",
+        "uname": "yy",
+        "email": "yy@yy.com",
+        "pswd": "1234",
+        "role": "user",
+        "remember": "on"
+    },
+    {
+        "uFname": "ann",
+        "uSname": "smith",
+        "uAddress": "usa",
+        "uname": "ann",
+        "email": "ann22@gmail.com",
+        "pswd": "1234",
+        "role": "user",
+        "remember": "on"
+    },
+    {
+        "uFname": "ann",
+        "uSname": "smith",
+        "uAddress": "usa",
+        "uname": "ann",
+        "email": "ann22@gmail.com",
+        "pswd": "1234",
+        "role": "user",
+        "remember": "on"
+    },
+    {
+        "uFname": "ann",
+        "uSname": "smith",
+        "uAddress": "usa",
+        "uname": "ann",
+        "email": "ann22@gmail.com",
+        "pswd": "1234",
+        "role": "user",
+        "remember": "on"
+    },
+    {
+        "uFname": "ann",
+        "uSname": "smith",
+        "uAddress": "usa",
+        "uname": "ann",
+        "email": "ann22@gmail.com",
+        "pswd": "1234",
+        "role": "user",
+        "remember": "on"
+    },
+    {
+        "uFname": "sujatha",
+        "uSname": "ssss",
+        "uAddress": "ssss",
+        "uname": "sujatha",
+        "email": "sujatha55@gmail.com",
+        "pswd": "1234",
+        "role": "admin",
+        "remember": "on"
+    },
+    {
+        "uFname": "yy",
+        "uSname": "yy",
+        "uAddress": "yy",
+        "uname": "yy",
+        "email": "ali@gg.com",
+        "pswd": "1234",
+        "role": "worker",
+        "remember": "on"
+    },
+    {
+        "uFname": "andy",
+        "uSname": "ss",
+        "uAddress": "ss",
+        "uname": "andy",
+        "email": "andy@gg.com",
+        "pswd": "1234",
+        "role": "user",
+        "remember": "on"
+    },
+    {
+        "uFname": "andy",
+        "uSname": "ss",
+        "uAddress": "ss",
+        "uname": "andy",
+        "email": "andy@gg.com",
+        "pswd": "1234",
+        "role": "user",
+        "remember": "on"
+    }
+]

@@ -1,6 +1,6 @@
 <br>
 <br>
-{{#person}}
+{{#with userData}}
 <div class="container">
     <div class="row">
         <h2 class="text-danger">User Info</h2>
@@ -22,13 +22,16 @@
                     <th>User Name</th>
                     <td>{{uname}}</td>
                 </tr>
-
+                 <tr>
+                    <th>Role</th>
+                    <td>{{role}}</td>
+                </tr>
             </thead>
 
         </table>
 
     </div>
 </div>
-{{/person}}
+{{/with}}
 <br>
 <br>
