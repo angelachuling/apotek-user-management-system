@@ -1,0 +1,100 @@
+{{#with newItem}}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 p-2 mt-4">
+            <form action="/master-product/update" method="POST">
+                <div class="card">
+                    <img src="{{src}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <label>Product id</label>
+                            <input type="text" class="form-control" name="id" id="id" placeholder="{{id}}">
+                        </div>
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" class="form-control" name="proName" id="proName"
+                                placeholder="{{proName}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Quantity:</label>
+                            <input type="text" class="form-control" name="quantity" id="quantity"
+                                placeholder="{{quantity}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Description:</label>
+                            <input type="text" class="form-control" name="description" id="description"
+                                placeholder="{{description}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Retail Price:</label>
+                            <input type="text" class="form-control" name="retailPrice" id="retailPrice"
+                                placeholder="{{retailPrice}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Purchase Price:</label>
+                            <input type="text" class="form-control" name="purchasePrice" id="purchasePrice"
+                                placeholder="{{purchasePrice}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Discount:</label>
+                            <input type="text" class="form-control" name="percentage_discount" id="percentage_discount"
+                                placeholder="{{percentage_iscount}}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-6 p-2 mt-4">
+            <form action="/master-product/delete" method="POST">
+                <div class="card">
+                    <img src="{{src}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <label>Product id</label>
+                            <input type="text" class="form-control" name="id" id="id" placeholder="{{id}}">
+                        </div>
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" class="form-control" name="proName" id="proName"
+                                placeholder="{{proName}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Quantity:</label>
+                            <input type="text" class="form-control" name="quantity" id="quantity"
+                                placeholder="{{quantity}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Description:</label>
+                            <input type="text" class="form-control" name="description" id="description"
+                                placeholder="{{description}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Retail Price:</label>
+                            <input type="text" class="form-control" name="retailPrice" id="retailPrice"
+                                placeholder="{{retailPrice}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Purchase Price:</label>
+                            <input type="text" class="form-control" name="purchasePrice" id="purchasePrice"
+                                placeholder="{{purchasePrice}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Discount:</label>
+                            <input type="text" class="form-control" name="percentage_discount" id="percentage_discount"
+                                placeholder="{{percentage_iscount}}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{{/with}}
+
+
+
