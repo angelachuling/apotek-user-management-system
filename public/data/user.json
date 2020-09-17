@@ -19,43 +19,12 @@
         "role": "worker",
         "remember": "on"
     },
-   
     {
         "uFname": "yy",
         "uSname": "yy",
         "uAddress": "yy",
         "uname": "yy",
         "email": "yy@yy.com",
-        "pswd": "1234",
-        "role": "user",
-        "remember": "on"
-    },
-    {
-        "uFname": "ann",
-        "uSname": "smith",
-        "uAddress": "usa",
-        "uname": "ann",
-        "email": "ann22@gmail.com",
-        "pswd": "1234",
-        "role": "user",
-        "remember": "on"
-    },
-    {
-        "uFname": "ann",
-        "uSname": "smith",
-        "uAddress": "usa",
-        "uname": "ann",
-        "email": "ann22@gmail.com",
-        "pswd": "1234",
-        "role": "user",
-        "remember": "on"
-    },
-    {
-        "uFname": "ann",
-        "uSname": "smith",
-        "uAddress": "usa",
-        "uname": "ann",
-        "email": "ann22@gmail.com",
         "pswd": "1234",
         "role": "user",
         "remember": "on"
@@ -91,7 +60,7 @@
         "remember": "on"
     },
     {
-        "uFname": "andy",
+        "uFname": "andy2",
         "uSname": "ss",
         "uAddress": "ss",
         "uname": "andy",
@@ -101,13 +70,53 @@
         "remember": "on"
     },
     {
-        "uFname": "andy",
+        "uFname": "chuling",
+        "uSname": "chu",
+        "uAddress": "aaa",
+        "uname": "chuling",
+        "email": "chuling@gmail.com",
+        "pswd": "1234",
+        "role": "admin",
+        "remember": "on"
+    },
+    {
+        "uFname": "Sally",
+        "uSname": "john",
+        "uAddress": "aaa",
+        "uname": "sally",
+        "email": "sally@gmail.com",
+        "pswd": "1234",
+        "role": "worker",
+        "remember": "on"
+    },
+    {
+        "uFname": "Asreen",
+        "uSname": "Ilyas",
+        "uAddress": "musterstr.5",
+        "uname": "asreen",
+        "email": "asreen.ilyas55@gmail.com",
+        "pswd": "1234",
+        "role": "admin",
+        "remember": "on"
+    },
+    {
+        "uFname": "adam",
         "uSname": "ss",
         "uAddress": "ss",
-        "uname": "andy",
-        "email": "andy@gg.com",
+        "uname": "adam",
+        "email": "adam@gmail.com",
         "pswd": "1234",
         "role": "user",
+        "remember": "on"
+    },
+    {
+        "uFname": "Sandy",
+        "uSname": "smith",
+        "uAddress": "anycity 2",
+        "uname": "sandy",
+        "email": "sandy@gmail.com",
+        "pswd": "1234",
+        "role": "worker",
         "remember": "on"
     }
 ]

@@ -1,72 +1,3 @@
-// let users = [];
-// console.log(users);
-// let checkID = false;
-
-
-//check login
-// function loginDetailSubmit(userName, password,event) {
-
-//     event.preventDefault();
-
-//     //export data from localStorage and covert it to JS array
-//     let existingDataJS = JSON.parse(localStorage.getItem('apotekUsers'));
-//     console.table(existingDataJS);
-
-//     existingDataJS.find(checkSignIn);
-
-//     function checkSignIn(item) {
-//         console.log(userName, password);
-//         console.log(item);
-//         if (item.userName === email && item.password === password) {
-//             checkID = true;
-//             console.log(checkID);
-//             window.location.href = "/product";
-//         }
-//     }
-
-//     console.log(checkID);
-
-//     if (checkID == false){
-//         alert("Log in failed! Pls try again.");
-//     }
-// }
-// //new user sign up
-// function registerUser(firstName, lastName, userName, password, event){
-//     firstName.value, lastName.value, userName.value, pswd.value,
-
-//     event.preventDefault();
-
-//     console.log("first check");
-//     if (firstName, lastName, userName, password) {
-
-//             //export data from localStorage and covert it to JS array. 
-//             //let existingDataJS = JSON.parse(localStorage.getItem('apotekUsers'));
-
-//             if (existingDataJS == null){
-//                 existingDataJS = [];
-//             }
-
-//             let newUser = {
-//                 firstName: firstName,
-//                 lastName: lastName,
-//                 userName: userName,
-//                 password: password
-//             };
-//             console.log("second check" + newUser);
-//             existingDataJS.push(newUser);
-
-//             //save new user data in localstorage
-//             localStorage.setItem('apotekUsers', JSON.stringify(existingDataJS));
-
-//             console.log("new user input done")
-
-//             window.location.href = "/product";
-
-//     } else {
-//         alert("Pls complete all the fields when submit.")
-//     }
-// }
-
 
 //creat an array that holds selected items
 //calculate and display total order quantity
@@ -131,19 +62,7 @@ function addFavorite(id, title) {
         document.getElementById("favoriteCount").innerHTML = favTotal;
     }
     console.log(favoriteList)
-    // if(heartColor == 'red'){
-    //     heartColor = 'white';
-    //     favoriteList.map((item,index)=>{
-    //         if(item==title){
-    //             favoriteList.slice(index);
-    //         }
-    //     })
-
-    //     favTotal = favoriteList.length;
-    //     document.getElementById("favoriteCount").innerHTML = favTotal;
-    //     console.log(favTotal)
-
-    //}
+    
 }
 //display items in fav cart
 function checkFavF() {
@@ -152,4 +71,106 @@ function checkFavF() {
         favContainer.innerHTML += `<a class="dropdown-item" href="#">${favoriteList[i]}</a>`;
     }
 }
+// function for switching create new product form and updat product form
+function editFunc(){
+    document.getElementById('productForm').innerHTML=`<form class="form-horizontal" action="/master-product" method="DEL" id="productForm">
+    <fieldset>
+  
+      <!-- Form Name -->
+      <legend>PRODUCTS</legend>
+      <div class="row">
+        <!-- Text input-->
+        <div class="form-group  col-md-3 ">
+          <div class="row">
+            <label class="col-md-12 control-label" for="id">PRODUCT ID</label>
+            <div class="col-md-12">
+              <input id="product_id" name="id" placeholder="PRODUCT ID" class="form-control input-md" required=""
+                type="text">
+            </div>
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group col-md-3">
+          <div class="row">
+            <label class="col-md-12 control-label" for="proName">PRODUCT NAME</label>
+            <div class="col-md-12">
+              <input id="product_name" name="proName" placeholder="PRODUCT NAME" class="form-control input-md" required=""
+                type="text">
+            </div>
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group col-md-3">
+          <div class="row">
+            <label class="col-md-12 control-label" for="quantity">QUANTITY</label>
+            <div class="col-md-12">
+              <input id="available_quantity" name="quantity" placeholder="AVAILABLE QUANTITY"
+                class="form-control input-md" required="" type="text">
+  
+            </div>
+          </div>
+        </div>
+  
+        <!-- Textarea -->
+        <div class="form-group col-md-3">
+          <div class="row">
+            <label class="col-md-12 control-label" for="description">PRODUCT DESCRIPTION</label>
+            <div class="col-md-12">
+              <textarea class="form-control" id="product_description" name="description"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Text input-->
+        <div class="form-group col-md-3">
+          <div class="row">
+            <label class="col-md-12 control-label" for="retailPrice">Retail Price </label>
+            <div class="col-md-12">
+              <input id="percentage_discount" name="retailPrice" placeholder="Retail Price" class="form-control input-md"
+                required="" type="text">
+            </div>
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group col-md-3">
+          <div class="row">
+            <label class="col-md-12 control-label" for="purchasePrice">Purchase Price</label>
+            <div class="col-md-12">
+              <input id="percentage_discount" name="purchasePrice" placeholder="Purchase Price"
+                class="form-control input-md" required="" type="text">
+            </div>
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group col-md-3">
+          <div class="row">
+            <label class="col-md-12 control-label" for="percentage_discount">PERCENTAGE DISCOUNT</label>
+            <div class="col-md-12">
+              <input id="percentage_discount" name="percentage_discount" placeholder="PERCENTAGE DISCOUNT"
+                class="form-control input-md" required="" type="text">
+  
+            </div>
+          </div>
+        </div>
+        <!-- File Button -->
+        <div class="form-group col-md-3 ">
+          <label class="col-md-12 control-label" for="src">Image</label>
+          <div class="col-md-12">
+            <input id="filebutton" name="src" class="input-file" type="text">
+          </div>
+        </div>
+      </div>
+      <!-- File Button -->
+      <!-- Button -->
+      <div class="form-group">
+        <div class="col-md-4">
+          <button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </div>
+  
+    </fieldset>
+  </form>`
+}
+function delFunc(id){}
 

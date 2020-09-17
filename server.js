@@ -3,19 +3,22 @@ const app = express();
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const { userInfo } = require("os");
-
+const mongoose=require('mongoose');
+const User=require('./model/schema');
+const Product=require('./model/productModel');
+const { runInNewContext } = require("vm");
 //set up a static folder
 app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.urlencoded({ extended: true }));
-
+// connect to Database
+mongoose.connect('mongodb+srv://Admin:Asreen1981@asreen-cluster.miipv.mongodb.net/apotheke', {useUnifiedTopology: true,useNewUrlParser: true})
+         .then(()=>{console.log('MongoDB is connected ...')})
+         .catch((err)=>{console.log(err)})
 let userData = {};
 
 //set up a static folder
 app.use(express.static(`${__dirname}/public`));
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
+app.use(bodyParser.urlencoded({extended: true})
 );
 //set up template engine
 app.set("view engine", "hbs");
@@ -34,10 +37,23 @@ app.get("/aboutus", (req, res) => {
 
 app.get("/product", (req, res) => {
   let productData = JSON.parse(fs.readFileSync(`${__dirname}/public/data/product.json`));
-
   res.render("product",{product:productData});
 });
+app.get("/master-product", (req, res) => {
+  res.render("masterProduct");
+});
+app.patch("/master-product", (req, res) => {
+  res.render("masterProduct");
+});
 
+app.post("/master-product", (req, res) => {
+ console.log(req.body);
+ let newItem=req.body;
+ res.render("masterProduct",{newItem})
+
+ let newProduct=new Product(req.body); 
+ newProduct.save(()=>{console.log('Data is saved in DB')})
+});
 app.get("/contact", (req, res) => {
   res.render("contact");
 });
@@ -58,7 +74,8 @@ app.post("/signup", function (req, res) {
   console.log(currentData);
   fs.writeFileSync(`${__dirname}/public/data/user.json`, JSON.stringify(currentData));
   res.render("Login");
-  
+  let newUser=new User(req.body); 
+  newUser.save(()=>{console.log('Data is saved in DB')})
 });
 
 app.post("/login", function (req, res) {
