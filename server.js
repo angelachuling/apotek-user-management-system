@@ -54,7 +54,7 @@ app.get("/admin-product", (req, res) => {
   Product.find((err, data) => {
     if (err) console.log(err)
     else {
-      res.render("admin-overview", { data, title: 'admin product page' });
+      res.render("admin-overview", { product:data, title: 'admin product page' });
     }
   })
 });
@@ -62,7 +62,8 @@ app.get("/admin-user", (req, res) => {
   User.find((err, data) => {
     if (err) console.log(err)
     else {
-      res.render("admin-overview", { data, title: 'admin user page' });
+      console.log(data);
+      res.render("admin-overview", { user:data, title: 'admin user page' });
     }
   })
 });
