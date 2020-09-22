@@ -1,0 +1,53 @@
+ {{#if msg}}
+    <div class="alert alert-warning w-50 mt-3" role="alert"> {{msg}} </div>
+{{/if}}
+<div class="container w-100">
+    {{#with newItem}}
+    <div class="row  w-100 m-auto">
+        <div class="col-sm-12 p-2 mt-4">
+            <form action="/update/:{{id}}" method="POST">
+                <div class="card m-auto" style="width: 100%;">
+                    <img src="{{src}}" class="card-img-top m-auto" style="height: 200px; width:200px;" alt="...">
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <label class="text-info">Product id</label>
+                            <input type="text" class="form-control" name="id" id="id" value="{{id}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-info">Product Name</label>
+                            <input type="text" class="form-control" name="proName" id="proName" value="{{proName}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-info" for="role">Quantity:</label>
+                            <input type="text" class="form-control" name="quantity" id="quantity" value="{{quantity}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-info" for="role">Description:</label>
+                            <input type="text" class="form-control" name="description" id="description"
+                                value="{{description}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-info" for="role">Retail Price:</label>
+                            <input type="text" class="form-control" name="retailPrice" id="retailPrice"
+                                value="{{retailPrice}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-info" for="role">Purchase Price:</label>
+                            <input type="text" class="form-control" name="purchasePrice" id="purchasePrice"
+                                value="{{purchasePrice}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-info" for="role">Discount:</label>
+                            <input type="text" class="form-control" name="percentage_discount" id="percentage_discount"
+                                value="{{percentage_discount}}">
+                        </div>
+                        <button type="submit" class="myButton3">Update</button>
+                        {{!-- <button type="submit" class="btn btn-primary">Update</button> --}}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {{/with}}
+</div>

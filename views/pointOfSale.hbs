@@ -1,0 +1,76 @@
+<div>
+    <div class="row">
+        <div class="col-sm-6 p-2 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center"><strong>Order</strong></h3>
+                </div>
+                <div class="card-body">
+                    <form action="/pointOfSale" method="POST">
+                        <div class="form-group">
+                            <label>Product id</label>
+                            <input type="text" class="form-control" name="sellingProductId" id="sellingProductId"
+                                placeholder="Enter Product id">
+                        </div>
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" class="form-control" name="sellingProductName" id="sellingProductName"
+                                placeholder="Enter Product Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Quantity:</label>
+                            <input type="text" class="form-control" name="sellingProductQuantity"
+                                id="sellingProductQuantity" placeholder="Enter Quantity">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </form>
+                </div>
+​
+            </div>
+        </div>
+        {{!-- {{#each sellingItem}} --}}
+        <div class="col-md-6 p-2 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center"><strong>Order summary</strong></h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <td><strong>Item Name</strong></td>
+                                    <td class="text-center"><strong>Item Price</strong></td>
+                                    <td class="text-center"><strong>Item Quantity</strong></td>
+                                    <td class="text-right"><strong>Total</strong></td>
+                                </tr>
+                            </thead>
+                            {{#each sellingItem}}
+                            <tbody>
+                                <tr>
+                                    <td>{{sellingItemName}}</td>
+                                    <td class="text-center">{{sellingItemPrice}}</td>
+                                    <td class="text-center" id="itemQuantityDisplay">{{sellingItemQuantity}}</td>
+                                    <td class="text-right" id="totalDisplay">{{sellingItemTotalPrice}}</td>
+                                    {{!-- <td class="text-right" id="overalltotalDisplay">{{totalAmount}}</td> --}}
+​
+                                </tr>
+                                {{#if @last}}
+                                <tr>
+                                    <td class="emptyrow"><i class="fa fa-barcode iconbig"></i></td>
+                                    <td class="emptyrow"></td>
+                                    <td class="emptyrow text-center"><strong>Total</strong></td>
+                                    <td class="text-right" id="overalltotalDisplay1">{{totalAmount}}</td>
+                                </tr>
+                                {{/if}}
+                                {{/each}}
+​
+                            </tbody>
+​
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{!-- {{/each}} --}}
+    </div>

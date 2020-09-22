@@ -1,108 +1,98 @@
 <form class="form-horizontal" action="/master-product" method="POST" id="productForm">
   <fieldset>
 
-      <!-- Form Name -->
-      <legend>PRODUCTS</legend>
-      <div class="row">
-        <!-- Text input-->
-        <div class="form-group  col-md-3 ">
-          <div class="row">
-            <label class="col-md-12 control-label" for="id">PRODUCT ID</label>
-            <div class="col-md-12">
-              <input id="product_id" name="id" placeholder="PRODUCT ID" class="form-control input-md"
-                type="text">
-            </div>
-          </div>
-        </div>
-        <!-- Text input-->
-        <div class="form-group col-md-3">
-          <div class="row">
-            <label class="col-md-12 control-label" for="proName">PRODUCT NAME</label>
-            <div class="col-md-12">
-              <input id="product_name" name="proName" placeholder="PRODUCT NAME" class="form-control input-md"
-                type="text">
-            </div>
-          </div>
-        </div>
-        <!-- Text input-->
-        <div class="form-group col-md-3">
-          <div class="row">
-            <label class="col-md-12 control-label" for="quantity">QUANTITY</label>
-            <div class="col-md-12">
-              <input id="available_quantity" name="quantity" placeholder="AVAILABLE QUANTITY"
-                class="form-control input-md" type="text">
-  
-            </div>
-          </div>
-        </div>
-  
-        <!-- Textarea -->
-        <div class="form-group col-md-3">
-          <div class="row">
-            <label class="col-md-12 control-label" for="description">PRODUCT DESCRIPTION</label>
-            <div class="col-md-12">
-              <textarea class="form-control" id="product_description" name="description"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <!-- Text input-->
-        <div class="form-group col-md-3">
-          <div class="row">
-            <label class="col-md-12 control-label" for="retailPrice">Retail Price </label>
-            <div class="col-md-12">
-              <input id="percentage_discount" name="retailPrice" placeholder="Retail Price" class="form-control input-md"
-               type="text">
-            </div>
-          </div>
-        </div>
-        <!-- Text input-->
-        <div class="form-group col-md-3">
-          <div class="row">
-            <label class="col-md-12 control-label" for="purchasePrice">Purchase Price</label>
-            <div class="col-md-12">
-              <input id="percentage_discount" name="purchasePrice" placeholder="Purchase Price"
-                class="form-control input-md" type="text">
-            </div>
-          </div>
-        </div>
-        <!-- Text input-->
-        <div class="form-group col-md-3">
-          <div class="row">
-            <label class="col-md-12 control-label" for="percentage_discount">PERCENTAGE DISCOUNT</label>
-            <div class="col-md-12">
-              <input id="percentage_discount" name="percentage_discount" placeholder="PERCENTAGE DISCOUNT"
-                class="form-control input-md" type="text">
-  
-            </div>
-          </div>
-        </div>
-        <!-- File Button -->
-        <div class="form-group col-md-3 ">
-          <label class="col-md-12 control-label" for="src">Image</label>
+    <!-- Form Name -->
+    <legend>PRODUCTS</legend>
+    <div class="row">
+      <!-- Text input-->
+      <div class="form-group  col-md-3 ">
+        <div class="row">
+          <label class="col-md-12 control-label" for="id">PRODUCT ID</label>
           <div class="col-md-12">
-            <input id="filebutton" name="src" class="input-file" type="text">
+            <input id="product_id" name="id" placeholder="PRODUCT ID" class="form-control input-md" type="text">
           </div>
         </div>
       </div>
-      <!-- File Button -->
-      <!-- Button -->
-      <div class="form-group">
-        <div class="col-md-4">
-          <button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit">Submit</button>
+      <!-- Text input-->
+      <div class="form-group col-md-3">
+        <div class="row">
+          <label class="col-md-12 control-label" for="proName">PRODUCT NAME</label>
+          <div class="col-md-12">
+            <input id="product_name" name="proName" placeholder="PRODUCT NAME" class="form-control input-md"
+              type="text">
+          </div>
         </div>
       </div>
-  
+      <!-- Text input-->
+      <div class="form-group col-md-3">
+        <div class="row">
+          <label class="col-md-12 control-label" for="quantity">QUANTITY</label>
+          <div class="col-md-12">
+            <input id="available_quantity" name="quantity" placeholder="AVAILABLE QUANTITY"
+              class="form-control input-md" type="text">
 
+          </div>
+        </div>
+      </div>
 
+      <!-- Textarea -->
+      <div class="form-group col-md-3">
+        <div class="row">
+          <label class="col-md-12 control-label" for="description">PRODUCT DESCRIPTION</label>
+          <div class="col-md-12">
+            <textarea class="form-control" id="product_description" name="description"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Text input-->
+      <div class="form-group col-md-3">
+        <div class="row">
+          <label class="col-md-12 control-label" for="retailPrice">Retail Price </label>
+          <div class="col-md-12">
+            <input id="percentage_discount" name="retailPrice" placeholder="Retail Price" class="form-control input-md"
+              type="text">
+          </div>
+        </div>
+      </div>
+      <!-- Text input-->
+      <div class="form-group col-md-3">
+        <div class="row">
+          <label class="col-md-12 control-label" for="purchasePrice">Purchase Price</label>
+          <div class="col-md-12">
+            <input id="percentage_discount" name="purchasePrice" placeholder="Purchase Price"
+              class="form-control input-md" type="text">
+          </div>
+        </div>
+      </div>
+      <!-- Text input-->
+      <div class="form-group col-md-3">
+        <div class="row">
+          <label class="col-md-12 control-label" for="percentage_discount">PERCENTAGE DISCOUNT</label>
+          <div class="col-md-12">
+            <input id="percentage_discount" name="percentage_discount" placeholder="PERCENTAGE DISCOUNT"
+              class="form-control input-md" type="text">
+
+          </div>
+        </div>
+      </div>
+      <!-- image input -->
+      <div class="form-group col-md-3 ">
+        <label class="col-md-12 control-label" for="src">Image</label>
+        <div class="col-md-12">
+          <input id="filebutton" name="src" class="input-file" type="text">
+        </div>
+      </div>
+    </div>
+    <!-- File Button -->
+    <!-- Button -->
+    <div class="form-group">
+      <div class="col-md-4">
+        <button id="singlebutton" class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </div>
   </fieldset>
 </form>
 
 <!-- Newly created product -->
-
-
-
-
-
-

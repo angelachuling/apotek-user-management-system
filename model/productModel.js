@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
     id: String,
     proName: String,
-    title: String,
     quantity: Number,
     description: String,
     retailPrice: Number,
@@ -11,6 +10,6 @@ const productSchema = new Schema({
     percentage_discount: Number,
     src: String   
 });
-const product = mongoose.model('Product', productSchema);
+const Product = mongoose.model('Product', productSchema);
 
-module.exports = product ;
+module.exports = Product ;

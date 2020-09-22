@@ -1,0 +1,217 @@
+<section id="tabs" class="project-tab">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                        <a href="/admin-product">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-product"
+                                role="tab" aria-controls="nav-home" aria-selected="true">Products
+                            </a>
+                        </a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-user" role="tab"
+                            aria-controls="nav-profile" aria-selected="false">Users</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+                            role="tab" aria-controls="nav-contact" aria-selected="false">Project Tab 3</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-product" role="tabpanel"
+                        aria-labelledby="nav-home-tab">
+                        <div class="bg-light w-100">
+                            <div class="text-center">
+                                <a href="/master-product" class="myButton float-right"> +Add a new product</a>
+                                <div class="columns columns-right btn-group pull-right">
+                                    <button class="btn btn-default" type="button" name="refresh" aria-label="Refresh"
+                                        title="Refresh">
+                                        <i class="glyphicon glyphicon-refresh icon-refresh"></i>
+                                    </button>
+                                    <button class="btn btn-default" type="button" name="toggle"
+                                        aria-label="Show card view" title="Show card view"><i
+                                            class="glyphicon glyphicon-list-alt icon-list-alt"></i>
+                                    </button>
+                                    <div class="keep-open btn-group" title="Columns">
+                                        <button class="btn btn-default dropdown-toggle" type="button"
+                                            data-toggle="dropdown" aria-label="Columns" title="Columns">
+                                            <i class="glyphicon glyphicon-th icon-th"></i>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="id" value="0" checked="checked">
+                                                    <span>ID</span></label></li>
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="proNamr" value="1"
+                                                        checked="checked"> <span>Name</span></label></li>
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="Quantity" value="2"
+                                                        checked="checked"> <span>Salary</span></label></li>
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="Description" value="3"
+                                                        checked="checked"> <span>Description</span></label>
+                                            </li>
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="Retail Price" value="4"
+                                                        checked="checked"> <span>Retail Price</span></label>
+                                            </li>
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="Purchase Price" value="4"
+                                                        checked="checked"> <span>Purchase
+                                                        Price</span></label></li>
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="Percentage discount" value="4"
+                                                        checked="checked"> <span>Percentage
+                                                        discount</span></label></li>
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="Image src" value="4"
+                                                        checked="checked"> <span>Image src</span></label></li>
+
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="actions" value="5"
+                                                        checked="checked"> <span>Actions</span></label></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <table id="fresh-table text-uppercase" class="table">
+                                    <thead class="text-danger m-2 text-uppercase">
+                                        <th data-field="id">_id</th>
+                                        <th data-field="id">ID</th>
+                                        <th data-field="Product Name">Product Name</th>
+                                        <th data-field="Quantity">Quantity</th>
+                                        <th data-field="description">Description</th>
+                                        <th data-field="Retail Price">Retail Price</th>
+                                        <th data-field="Purchase Price">Purchase Price</th>
+                                        <th data-field="percentage_discount">Percentage discount</th>
+                                        <th data-field="Image src">Image src</th>
+                                        <th data-field="actions" data-formatter="operateFormatter"
+                                            data-events="operateEvents">Actions</th>
+
+                                    </thead>
+                                    <tbody>
+                                        {{#each data}}
+                                        <tr class="text-lg text-bolder text-info text-uppercase" id="{{id}}">
+                                            <td class="row-data"> {{_id}}</td>
+                                            <td class="row-data"> {{id}}</td>
+                                            <td class="row-data"> {{proName}}</td>
+                                            <td class="row-data"> {{quantity}}</td>
+                                            <td class="row-data"> {{description}}</td>
+                                            <td class="row-data"> {{retailPrice}}€</td>
+                                            <td class="row-data"> {{purchasePrice}}€</td>
+                                            <td class="row-data"> {{percentage_discount}}%</td>
+                                            <td><img src="{{src}}" alt="product-image" id="adminPageImage" class="w-20">
+                                            </td>
+                                            <td class="d-blick justify-content-center">
+                                                {{!-- <i style="font-size: larger;" class="fas fa-edit pr-2">Edit item</i> --}}
+                                                <i class="fas fa-edit float-left"></i>
+                                                <a href="/update/{{_id}}" class="btn btn-outline-info" id="myButton">
+                                                    Edit </a>
+                                                <i style="font-size: larger; "
+                                                    class="fas fa-trash-alt float-left text-danger"></i>
+                                                <a href="/delete/{{_id}}" class="btn btn-outline-danger">Del</a>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="nav-user" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="bg-light w-100">
+                            <div class="text-center">
+
+                                <a href="/master-product" class="myButton float-right"> +Add a new user</a>
+                                <div class="columns columns-right btn-group pull-right">
+                                    <button class="btn btn-default" type="button" name="refresh" aria-label="Refresh"
+                                        title="Refresh">
+                                        <i class="glyphicon glyphicon-refresh icon-refresh"></i>
+                                    </button>
+                                    <button class="btn btn-default" type="button" name="toggle"
+                                        aria-label="Show card view" title="Show card view"><i
+                                            class="glyphicon glyphicon-list-alt icon-list-alt"></i>
+                                    </button>
+                                    <div class="keep-open btn-group" title="Columns">
+                                        <button class="btn btn-default dropdown-toggle" type="button"
+                                            data-toggle="dropdown" aria-label="Columns" title="Columns">
+                                            <i class="glyphicon glyphicon-th icon-th"></i>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="id" value="0" checked="checked">
+                                                    <span>uFname</span></label></li>
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="proNamr" value="1"
+                                                        checked="checked"> <span>uSname</span></label></li>
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="Quantity" value="2"
+                                                        checked="checked"> <span>email</span></label></li>
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="Description" value="3"
+                                                        checked="checked"> <span>pswd</span></label>
+                                            </li>
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="Retail Price" value="4"
+                                                        checked="checked"> <span>role</span></label>
+                                            </li>
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="Purchase Price" value="4"
+                                                        checked="checked"> <span>remember</span></label></li>
+                                            <li class="dropdown-item-marker" role="menuitem"><label><input
+                                                        type="checkbox" data-field="actions" value="5"
+                                                        checked="checked"> <span>Actions</span></label></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <table id="fresh-table text-uppercase" class="table">
+                                    <thead class="text-danger m-2 text-uppercase">
+                                        <th>_id</th>
+                                        <th>uFname</th>
+                                        <th>uSname</th>
+                                        <th>email</th>
+                                        <th>pswd</th>
+                                        <th>role</th>
+                                        <th>remember</th>
+                                        <th="actions" data-formatter="operateFormatter" data-events="operateEvents">
+                                            Actions</th>
+                                    </thead>
+                                    <tbody>
+                                        {{#each data}}
+                                        <tr class="text-lg text-bolder text-info text-uppercase" id="{{id}}">
+                                            <td class="row-data"> {{_id}}</td>
+                                            <td class="row-data"> {{uFname}}</td>
+                                            <td class="row-data"> {{uSname}}</td>
+                                            <td class="row-data"> {{email}}</td>
+                                            <td class="row-data"> {{pswd}}</td>
+                                            <td class="row-data"> {{role}}€</td>
+                                            <td class="row-data"> {{remember}}€</td>
+                                            <td class="d-blick justify-content-center">
+                                                {{!-- <i style="font-size: larger;" class="fas fa-edit pr-2">Edit item</i> --}}
+                                                <i class="fas fa-edit float-left"></i>
+                                                <a href="/update/{{_id}}" class="btn btn-outline-info" id="myButton">
+                                                    Edit </a>
+                                                <i style="font-size: larger; "
+                                                    class="fas fa-trash-alt float-left text-danger"></i>
+                                                <a href="/delete/{{_id}}" class="btn btn-outline-danger">Del</a>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <table class="table" cellspacing="0">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -10,6 +10,6 @@ const userSchema=new Schema({
         role: String,
         remember: String
 });
-const users=mongoose.model('User',userSchema);
+const User=mongoose.model('User',userSchema);
 
-module.exports=users;
+module.exports=User;

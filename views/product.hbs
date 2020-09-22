@@ -2,101 +2,21 @@
   <div class="row">
     {{#each product}}
     <div class="card col-md-4 p-5 mb-3">
-      <img src={{src}} class="card-img-top" alt="...">
+      <img src={{src}} class="card-img-top" style="height: 300px;" alt="...">
       <div class="card-body">
-        <h5 class="card-title">{{title}}</h5>
-        <p class="card-text">{{description}}</p>
+        <h5 class="card-title text-danger text-bild text-uppercase">{{proName}}</h5>
+        <p class="card-text">description :{{description}}</p>
+        <h3 class="card-text text-info">Retail Price:{{retailPrice}}€</h3>
+        <h3 class="card-text text-info">Discount:{{percentage_discount}}%</h3>
         <div> <input type="number" placeholder="Qty" id="qty_{{id}}" ></div>
       </div>
-      <button class="btn" id="favoriteButton_{{id}}" onclick="addFavorite({{id}},'{{title}}')"
+      <button class="btn" id="favoriteButton_{{id}}" onclick="addFavorite({{id}},'{{proName}}')"
         style="position:absolute; top: 0; right: 0; z-index: 10; color: grey; font-size: 1rem;">
         <i class="fas fa-heart"></i>
       </button>
       
-      <a href="#" class="btn btn-primary" onclick="orderButton('{{title}}',document.getElementById('qty_{{id}}').value)">Add to cart</a>
+      <a href="#" class="btn btn-primary" onclick="orderButton('{{proName}}',document.getElementById('qty_{{id}}').value)">Add to cart</a>
     </div>
     {{/each}}
   </div>
 </div>
-
-
-
-
-{{!-- <div class="card">
-      <img src="https://cdn.shop-apotheke.com/images/840x0/voltaren-schmerzgel-forte-gel-D11240397-p1.webp"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Voltaren® pain gel forte</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-      <button class="btn" id="favoriteButton" value="fav" onclick="addFavorite()"
-        style="position:absolute; top: 0; right: 0; z-index: 10; color: grey; font-size: 1rem;">
-        <i class="fas fa-heart"></i>
-      </button>
-      <a href="#" class="btn btn-primary" onclick="orderButton()">Add to cart</a>
-    </div>
-    <div class="card">
-      <img src="https://cdn.shop-apotheke.com/images/840x0/paracetamol-ratiopharm-500-mg-tabletten-D01126111-p1.webp"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Paracetamol-ratiopharm® 500 mg</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
-          This card has even longer content than the first to show that equal height action.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-         <button class="btn" id="favoriteButton" value="fav" onclick="addFavorite()"
-        style="position:absolute; top: 0; right: 0; z-index: 10; color: grey; font-size: 1rem;">
-        <i class="fas fa-heart"></i>
-      </button>
-      <a href="#" class="btn btn-primary" onclick="orderButton()">Add to cart</a>
-    </div>
- 
-  </div>
-  <div class="card-deck pt-5">
-    <div class="card">
-      <img
-        src="https://cdn.shop-apotheke.com/images/840x0/bepanthen-augen-und-nasensalbe-augen-und-nasensalbe-D01578675-p1.webp"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Bepanthen® eye and nose ointment</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
-          This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-      <button class="btn" id="favoriteButton" value="fav" onclick="addFavorite()"
-        style="position:absolute; top: 0; right: 0; z-index: 10; color: grey; font-size: 1rem;">
-        <i class="fas fa-heart"></i>
-      </button>
-      <a href="#" class="btn btn-primary" onclick="orderButton()">Add to cart</a>
-    </div>
-    <div class="card">
-      <img src="https://cdn.shop-apotheke.com/images/840x0/paracetamol-redcare-500-mg-tabletten-D16013200-p1.webp"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">PARACETAMOL RedCare 500 mg</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-      <button class="btn" id="favoriteButton" value="fav" onclick="addFavorite()"
-        style="position:absolute; top: 0; right: 0; z-index: 10; color: grey; font-size: 1rem;">
-        <i class="fas fa-heart"></i>
-      </button>
-      <a href="#" class="btn btn-primary" onclick="orderButton()">Add to cart</a>
-    </div>
-    <div class="card">
-      <img
-        src="https://cdn.shop-apotheke.com/images/840x0/vitamin-b-komplex-ratiopharm-kapseln-kapseln-D13352373-p1.webp"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Vitamin B complex ratiopharm® capsules</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
-          This card has even longer content than the first to show that equal height action.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-      <button class="btn" id="favoriteButton" value="fav" onclick="addFavorite()"
-        style="position:absolute; top: 0; right: 0; z-index: 10; color: grey; font-size: 1rem;">
-        <i class="fas fa-heart"></i>
-      </button>
-      <a href="#" class="btn btn-primary" onclick="orderButton()">Add to cart</a>
-    </div> --}}
