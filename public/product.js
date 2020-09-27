@@ -2,7 +2,6 @@
 function editFunc(){
     document.getElementById('productForm').innerHTML= `<form class="form-horizontal" action="/master-product" method="PATCH" id="productForm">
     <fieldset>
-  
       <!-- Form Name -->
       <legend>PRODUCTS</legend>
       <div class="row">

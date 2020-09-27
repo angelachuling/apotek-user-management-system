@@ -26,7 +26,6 @@ function orderButton(orderItem, qty) {
 }
 //cart 
 //display items in shopping cart
-
 function checkCartF() {
     console.log(orderList)
     cartContainer.innerHTML = '';
@@ -35,7 +34,6 @@ function checkCartF() {
     }
 }
 //favorite items
-
 let favoriteList = [];
 let favTotal = 0;
 let heartColor = 'red';
@@ -71,3 +69,11 @@ function checkFavF() {
         favContainer.innerHTML += `<a class="dropdown-item" href="#">${favoriteList[i]}</a>`;
     }
 }
+
+$("#testId").click(function(){
+    $.get("/productAjax", function(data, status){
+    //   alert("Data: " + data + "\nStatus: " + status);
+    $('#resultId').html(JSON.stringify(data));
+    });
+  });
+
