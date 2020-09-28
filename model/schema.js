@@ -8,6 +8,7 @@ const userSchema=new Schema({
         email: String,
         pswd: String,
         role: String,
+        imagePath:String,
         remember: String
 });
 const User=mongoose.model('User',userSchema);

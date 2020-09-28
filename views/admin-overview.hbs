@@ -89,7 +89,6 @@
                                         <th data-field="Image src">Image src</th>
                                         <th data-field="actions" data-formatter="operateFormatter"
                                             data-events="operateEvents">Actions</th>
-                                        <th>Actions</th>
 
                                     </thead>
                                     <tbody>
@@ -179,6 +178,7 @@
                                     <th>pswd</th>
                                     <th>role</th>
                                     <th>remember</th>
+                                     <th>image</th>
                                     <th>Actions</th>
                                 </thead>
                                 <tbody>
@@ -191,12 +191,13 @@
                                         <td class="row-data"> {{pswd}}</td>
                                         <td class="row-data"> {{role}}</td>
                                         <td class="row-data"> {{remember}}</td>
+                                        <td><img src="{{imagePath}}" alt="user-image" id="adminPageImage" class="w-25" style="height:70px;">
+                                        </td>
                                         <td class="d-blick justify-content-center">
-                                            <i class="fas fa-edit float-left"></i>
+                                           
                                             <a href="/updateUser/{{_id}}" class="btn btn-outline-info" id="myButton">
                                                 Edit </a>
-                                            <i style="font-size: larger; "
-                                                class="fas fa-trash-alt float-left text-danger"></i>
+                                         
                                             <a href="/deleteUser/{{_id}}" class="btn btn-outline-danger">Del</a>
                                         </td>
                                         <td></td>
@@ -213,5 +214,5 @@
 </section>
 
 
-    <button type="button" class="btn btn-primary " id="testId">Products in DB</button>
-    <span id="resultId"></span>
+<button type="button" class="btn btn-primary " id="testId">Products in DB</button>
+<span id="resultId"></span>

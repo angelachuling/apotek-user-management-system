@@ -1,19 +1,21 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const fs = require("fs");
-const { userInfo } = require("os");
+// const fs = require("fs");
+// const { userInfo } = require("os");
 const mongoose = require('mongoose');
 const User = require('./model/schema');
-var cookieParser = require('cookie-parser');
+// var cookieParser = require('cookie-parser');
 var session = require('express-session');
 const url = require('url')
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
-const passportLocalMongoose = require("passport-local-mongoose");
+// const passport = require("passport");
+// const LocalStrategy = require("passport-local");
+// const passportLocalMongoose = require("passport-local-mongoose");
 const Product = require('./model/productModel');
-const { Store } = require("express-session");
-const { allowedNodeEnvironmentFlags } = require("process");
+// const { Store } = require("express-session");
+// const { allowedNodeEnvironmentFlags } = require("process");
+const path = require('path');
+var multer = require('multer')
 let newItem, userData, sellingItem = [], amount = 0, totalPrice, msg, userId;
 app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,8 +25,16 @@ app.use(session({
   saveUninitialized: false,
   cookie: { secure: false, maxAge: 1000 * 24 * 60 * 60 }
 }));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
+// setup Multer
+const storage = multer.diskStorage({
+  destination: function (req, file, res) { res(null, 'public/uploads') },
+  filename: function (req, file, res) { res(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)) },
+});
+const upload = multer({
+  storage: storage
+})
 // connect to Database
 let mongoDbUrl = "mongodb+srv://Admin:Asreen1981@asreen-cluster.miipv.mongodb.net/apotheke"
 mongoose.connect(mongoDbUrl, { useUnifiedTopology: true, useNewUrlParser: true })
@@ -36,7 +46,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //set up template engine
 app.set("view engine", "hbs");
 //Routes
-app.get("/home",(req, res) => {
+app.get("/home", (req, res) => {
   console.log(req.session);
   console.log(req.sessionID)
   if (!req.session.viewsCount) {
@@ -144,7 +154,7 @@ app.get("/updateUser/:id", (req, res) => {
     if (err) throw err;
     userData = doc;
     console.log('data updated', "userData :" + userData);
-    res.render('userInfo', { userData ,msg,userId});
+    res.render('userInfo', { userData, msg, userId });
   })
 });
 app.post("/updateUser/:id", (req, res) => {
@@ -218,11 +228,22 @@ app.get("/login", (req, res) => {
 app.get('/admin/acs', (req, res) => {
   res.render('userInfo', { title: 'user info' }, userData);
 })
-app.post("/signup", function (req, res) {
-  console.log(req.body);
-  let newUser = new User(req.body);
+app.post("/signup", upload.single('avatar'), function (req, res) {
+  //console.log(req.body);
+  const file = req.file;
+  console.log('*****saved file informaition*****')
+  console.log(file)
+  console.log('*****show inputs sign-up*****')
+  //console.log(req.body);
+  let userInfo = req.body;
+  let userObject = {
+    imagePath: 'uploads/'+file.filename,
+    ...userInfo
+  }
+  //console.log(userObject)
+  let newUser = new User(userObject);
   newUser.save(() => { console.log('Data is saved in DB') })
-  res.render("Login", { title: 'login-page' });
+  res.render("Login", { title: 'login-page'});
 });
 app.post("/login", checkUser);
 app.get("/logout", (req, res) => {
@@ -258,8 +279,25 @@ app.post("/pointOfSale", function (req, res) {
 })
 app.listen(5000, () => {
   console.log("Listening to port 5000");
-
 });
+//add user with his info and Image 
+// app.post('/sign-up',upload.single('avatar') ,(req, res) => {
+//   const file = req.file
+//   console.log('*********************saved file informaition*********************')
+//   console.log(file)
+//   req.body.avatar = 'uploads/'+file.filename;
+//   console.log('*********************show inputs sign-up*********************')
+//   console.log(req.body);
+//   let newUser = new User(req.body)
+//   newUser.save(() => {
+//     console.log('Data is saved......')
+//   });
+//   res.redirect('/log-in');
+// })
+// app.post('/profile', upload.single('avatar'), function (req, res, next) {
+//   // req.file is the `avatar` file
+//   // req.body will hold the text fields, if there were any
+// })
 //functions
 function checkUser(req, res) {
   let role;
@@ -288,14 +326,14 @@ function checkUser(req, res) {
     else {
       console.log('userFound', userFound);
       msg = "Email or password is invalid ";
-      res.render('login', { title: 'login-page',msg})
+      res.render('login', { title: 'login-page', msg })
     }
   })
-  
+
 }
 function checklogin(req, res, next) {
-  if(req.session.userLogin) {
-    let role=req.session.userLogin.role;
+  if (req.session.userLogin) {
+    let role = req.session.userLogin.role;
     if (role == "user") res.redirect('/product')
     else if (role == "admin") res.redirect('/admin-overview')
     else if (role == "worker") res.redirect('/pointOfSale')
