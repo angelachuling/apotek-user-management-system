@@ -1,0 +1,13 @@
+<div class="container1">
+  {{#each users}}
+  <div class="card card1 bg-dark">
+    <img src="{{imagePath}}" alt="Person" class="card__image" style="margin-left: 60px;">
+    <p class="card__name text-center">{{uFname}}  {{uSname}}</p>
+    <div class="text-danger ml-5"><strong class="text-warning m-auto">Email:  </strong>   {{email}}</div>
+    <div class="text-danger ml-5"><strong class="text-warning">Address:</strong> {{uAddress}}</div>
+    <div class="text-danger ml-5"><strong class="text-warning">Role:   </strong>    {{role}}</div>
+    <a href="#"><button class="btn1 draw-border" style="margin-left: 60px;">Edit</button></a>
+    <a href="#"><button class="btn1 draw-border" style="margin-left: 60px;">Delete</button></a>
+  </div>
+  {{/each}}
+</div>
