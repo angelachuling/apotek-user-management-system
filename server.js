@@ -3,13 +3,21 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const User = require('./model/schema');
-// const takeInfo=require('./public/main')
-const hbs=require('hbs')
+const Email = require('./model/emailModel');
+const Product = require('./model/productModel');
+const flash = require('connect-flash');
+const dotenv = require('dotenv').config();
+const hbs = require('hbs');
+const fs = require('fs');
+const crypto = require('crypto')
+const PORT = process.env.PORT;
 var session = require('express-session');
 const url = require('url')
-const Product = require('./model/productModel');
+const output = require('./public/outputEmail')
 const path = require('path');
-var multer = require('multer')
+var multer = require('multer');
+const sendEmail = require("./utils/sendEmail");
+const replay = require("./public/sendEmailClient");
 let newItem, userData, sellingItem = [], amount = 0, totalPrice, msg, userId;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
@@ -21,22 +29,24 @@ app.use(session({
 // setup Multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) { cb(null, 'public/uploads') },
-  filename: function (req, file, cb) { cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))},
+  filename: function (req, file, cb) { cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)) },
 });
-const upload = multer({storage: storage})
+const upload = multer({ storage: storage })
 // connect to Database
-let mongoDbUrl = "mongodb+srv://Admin:Asreen1981@asreen-cluster.miipv.mongodb.net/apotheke"
+let mongoDbUrl = process.env.mongoURL;
 mongoose.connect(mongoDbUrl, { useUnifiedTopology: true, useNewUrlParser: true })
-  .then(() => { console.log('MongoDB is connected ...')})
+  .then(() => { console.log('MongoDB is connected ...') })
   .catch((err) => { console.log(err) })
+mongoose.set('useCreateIndex', true)
 //set up a static folder
 app.use(express.static(`${__dirname}/public`));
 //set up template engine
 app.set("view engine", "hbs");
+app.use(flash());
 //Routes
 app.get("/home", (req, res) => {
-  console.log(req.session);
-  console.log(req.sessionID)
+  // console.log(req.session);
+  // console.log(req.sessionID)
   if (!req.session.viewsCount) {
     req.session.viewsCount = 1;
     console.log("Welcome to this page for the first time!");
@@ -50,10 +60,10 @@ app.get("/", (req, res) => {
   res.redirect("/home");
 });
 app.get("/allUser", (req, res) => {
-  User.find((err,data)=>{
-  if (err) throw err
-  else  res.render("displayAllUsers",{users:data});
-  }) 
+  User.find((err, data) => {
+    if (err) throw err
+    else res.render("displayAllUsers", { users: data });
+  })
 });
 app.get("/master-product", (req, res) => {
   res.render("masterProduct", { title: 'Add a product' });
@@ -70,7 +80,7 @@ app.get("/aboutus", (req, res) => {
   res.render("aboutUs", { title: 'about us' });
 });
 app.get("/admin-overview", (req, res) => {
-  res.render("admin-overview", { title: 'Admin-page'});
+  res.render("admin-overview", { title: 'Admin-page' });
 });
 app.get("/productAjax", (req, res) => {
   Product.find((err, data) => {
@@ -91,10 +101,10 @@ app.get("/userAjax", (req, res) => {
   })
 });
 app.get("/admin-product", (req, res) => {
-   Product.find((err, data) => {
+  Product.find((err, data) => {
     if (err) console.log(err)
     else {
-       res.render("admin-overview", { product:data, title: 'admin product page' });
+      res.render("admin-overview", { product: data, title: 'admin product page' });
     }
   })
 });
@@ -111,7 +121,7 @@ app.get("/product", (req, res) => {
   Product.find({}, (err, data) => {
     if (err) console.log(err)
     else {
-      console.log(data);
+      // console.log(data);
       res.render("product", { product: data, title: 'product page' })
     }
   });
@@ -140,11 +150,12 @@ app.post("/master-product", (req, res) => {
   res.redirect("/product")
 });
 app.get("/deleteUser/:id", (req, res) => {
-  Product.findOneAndDelete({_id: req.params.id },(err,docs) => {
+  let id = req.params.id;
+  User.deleteOne({ _id: id }, (err, data) => {
     console.log(req.params.id)
     if (err) console.log('error from server' + err)
     else { //res.send('data is '+ data)
-    console.log(docs)
+      console.log(data)
       res.redirect("/admin-overview");
     }
   })
@@ -225,7 +236,8 @@ app.post("/update/:id", (req, res) => {
   })
 });
 app.get("/contact", (req, res) => {
-  res.render("contact", { title: 'contact-page' });
+  // console.log(req.session.flash)
+  res.render("contact", { title: 'contact-page',msgEmail:req.flash('msg') });
 });
 app.get("/login", (req, res) => {
   res.render("login");
@@ -241,13 +253,13 @@ app.post("/signup", upload.single('avatar'), function (req, res) {
   //console.log(req.body);
   let userInfo = req.body;
   let userObject = {
-    imagePath: 'uploads/'+file.filename,
+    imagePath: 'uploads/' + file.filename,
     ...userInfo
   }
   //console.log(userObject)
   let newUser = new User(userObject);
   newUser.save(() => { console.log('Data is saved in DB') })
-  res.render("Login", { title: 'login-page'});
+  res.render("Login", { title: 'login-page' });
 });
 app.post("/login", checkUser);
 app.get("/logout", (req, res) => {
@@ -281,8 +293,63 @@ app.post("/pointOfSale", function (req, res) {
     }
   });
 })
-app.listen(5000, () => {
-  console.log("Listening to port 5000");
+app.get('/verify_email', function (req, res) {
+  let hexNum = req.query.token;
+  Email.findOne({ authToken: hexNum }, function (err, doc) {
+    if (err) { return console.error(err); }
+    doc.isAuthenticated = true;
+    var userEmail = doc.email;
+    console.log('userEmail', userEmail)
+    doc.save(function (err) {
+      if (err) return console.error(err);
+      console.log('succesfully updated users email');
+      sendEmail(
+        userEmail,
+        'asreen.ilyas66@gmail.com',// verified
+        'Email confirmed!',
+        replay(doc.name)
+      );
+    });
+  });
+  res.render('verifyEmail', { title: 'Authenticating...' });
+});
+var authenticationURL;
+app.post('/mailFromContact', (req, res) => {
+  const { name, email, message } = req.body;
+  console.log('user email:', req.body.email);
+  //generate authentication token
+  var seed = crypto.randomBytes(20);
+  var authToken = crypto.createHash('sha1').update(seed + req.body.email).digest('hex');
+  console.log('autToken',authToken)
+  var newEmail = new Email({
+    name,
+    email,
+    message,
+    authToken: authToken,
+    isAuthenticated: false
+  });
+  authenticationURL = 'http://localhost:5000/verify_email?token=' + newEmail.authToken;
+  newEmail.save(function (err, newEmail) {
+    if (err) {
+      return console.error(err);
+    }
+    console.log('new contact user', newEmail);
+  });
+  console.log('authenticationURL', authenticationURL)
+  sendEmail(to = 'asreen.ilyas66@gmail.com',//newEmail.email
+    from = 'asreen.ilyas66@gmail.com',
+    subject = 'Confirm your email',
+    html = output(name, email, message, authenticationURL)
+  );
+  let msgEmail = false;
+  req.flash('msg','Thank you for your message. We will send you Email. Check you Email please !!')
+  res.redirect('contact')
+  msgEmail = false;
+})
+
+
+app.listen(PORT, () => {
+  console.log("Listening to port", PORT);
 });
 //functions
 function checkUser(req, res) {
@@ -326,7 +393,9 @@ function checklogin(req, res, next) {
   }
   next();
 }
-// get data for products
+// register partials
+hbs.registerPartials(__dirname + '/views/partials/')
+hbs.registerPartial('carousel', 'carousel.hbs')
 
 
 
